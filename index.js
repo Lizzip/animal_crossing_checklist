@@ -200,6 +200,7 @@ function App(selection, display){
     $("#bugCheckbox").click(() => this.setupDisplay());
     $("#nowCheckbox").click(() => this.setupDisplay());
     $("#caughtCheckbox").click(() => this.setupDisplay());
+    $("#leavingCheckbox").click(() => this.setupDisplay());
   }
 
   this.setupDisplay = function(){
@@ -207,9 +208,10 @@ function App(selection, display){
     const bugChecked = $("#bugCheckbox").is(":checked");
     const nowChecked = $("#nowCheckbox").is(":checked");
     const caughtChecked = $("#caughtCheckbox").is(":checked");
+    const leavingChecked = $("#leavingCheckbox").is(":checked");
 
     //Filter table based on which checkboxes have been checked
-    this.filter(fishChecked, bugChecked, nowChecked, caughtChecked);
+    this.filter(fishChecked, bugChecked, nowChecked, caughtChecked, leavingChecked);
   }
 
   this.getMonth = function(){
@@ -217,7 +219,12 @@ function App(selection, display){
     return monthNames[now.getMonth()];
   }
 
-  this.filter = function(fish, bug, now, caught){
+  this.getNextMonth = function(){
+    const now = new Date();
+    return monthNames[(now.getMonth() + 1) % 12];
+  }
+
+  this.filter = function(fish, bug, now, caught, leaving){
     let show = [];
     const month = this.getMonth();
 
@@ -233,6 +240,11 @@ function App(selection, display){
         const critterIndex = critterNames.indexOf(e.name).toString();
         return this.saveData.indexOf(critterIndex) == -1;
       });
+    }
+
+    if(leaving){
+      const nextMonth = this.getNextMonth();
+      show = show.filter(e => (e.month.toLowerCase().includes(month) && !e.month.toLowerCase().includes(nextMonth)))
     }
 
     this.clearTable();
@@ -253,13 +265,13 @@ function App(selection, display){
     show.forEach(e => {
       let checked = "";
       const critterIndex = critterNames.indexOf(e.name).toString();
-      if(this.saveData.indexOf(critterIndex) > -1) checked = "checked=true"; 
+      if(this.saveData.indexOf(critterIndex) > -1) checked = "checked=true";
 
       let check = `<div class="form-check form-check-inline"><input class="form-check-input" ${checked} type="checkbox" id="${e.name}" value="${e.name}"><label class="form-check-label" for="${e.name}"></label></div>`;
       let row = `<tr><td>${check}</td><td>${e.name}</td><td>${e.type}</td><td>${e.price}</td><td>${e.location}</td><td>${e.time}</td><td>${e.month}</td></tr>`;
 
       $("#displayTable > tbody").append(row);
-      
+
       document.getElementById(e.name).addEventListener("click", () => {
           this.tryCatchSomething(e.name)
       }, false);
@@ -274,7 +286,7 @@ function App(selection, display){
     const newDataString = newData.toString();
     const isChecked = $(`[id='${critter}']`).is(":checked");
     const index = this.saveData.indexOf(newDataString);
-    
+
     if(isChecked && index < 0) this.saveData.push(newDataString);
     if(!isChecked && index > -1) this.saveData.splice(index, 1);
 
