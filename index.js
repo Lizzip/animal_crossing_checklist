@@ -284,7 +284,7 @@ function App(selection, display){
 
     const critter = critterNames[newData];
     const newDataString = newData.toString();
-    const isChecked = $(`[id='${critter}']`).is(":checked");
+    const isChecked = $(`[id='${this.escapeAllSingleQuotes(critter)}']`).is(":checked");
     const index = this.saveData.indexOf(newDataString);
 
     if(isChecked && index < 0) this.saveData.push(newDataString);
@@ -292,5 +292,9 @@ function App(selection, display){
 
     //save to local storage
     store.setItem("acnh-collectionData", this.saveData.toString());
+  }
+
+  this.escapeAllSingleQuotes = function(value){
+    return value.replace(/'/g, "\\'");
   }
 }
