@@ -184,31 +184,73 @@ const bugData = [
 
 const fossilData = [];
 
+const filterConfigKey = "acnh-filterConfigData";
+const collectionDataKey = "acnh-collectionData";
+
 function App(selection, display){
 
   this.selection = selection;
   this.display = display;
 
-  // Get saved data from storage and convert to array
-  this.saveData = store.getItem("acnh-collectionData");
-  if(this.saveData) this.saveData = this.saveData.split(',')
-  else this.saveData = [];
+  const defaultFilterConfigData = {
+    fishChecked: true, bugChecked: true, nowChecked: false, caughtChecked: false, leavingChecked: false
+  };
+
+  this.saveFilterConfigToLocalStore = function(){
+    store.setItem(filterConfigKey, JSON.stringify(this.filterConfigData));
+  }
+
+  this.loadDataFromLocalStore = function(){
+    // Get saved data from storage and convert to array
+    this.saveData = store.getItem(collectionDataKey);
+    if(this.saveData) this.saveData = this.saveData.split(',')
+    else this.saveData = [];
+
+    this.filterConfigData = JSON.parse(store.getItem(filterConfigKey));
+    if(!this.filterConfigData) {
+      this.filterConfigData = defaultFilterConfigData;
+      this.saveFilterConfigToLocalStore();
+    }
+  }
+
+  this.handleFilterCheckboxClicked = function(key){
+    this.filterConfigData[key] = !this.filterConfigData[key];
+    this.setupDisplay(); 
+    this.saveFilterConfigToLocalStore();
+  }
 
   this.setupSelection = function(){
     // Bind all filter checkboxes to redraw table on click
-    $("#fishCheckbox").click(() => this.setupDisplay());
-    $("#bugCheckbox").click(() => this.setupDisplay());
-    $("#nowCheckbox").click(() => this.setupDisplay());
-    $("#caughtCheckbox").click(() => this.setupDisplay());
-    $("#leavingCheckbox").click(() => this.setupDisplay());
+    $("#fishCheckbox").click(() => { 
+      this.handleFilterCheckboxClicked('fishChecked');
+    });
+    $("#bugCheckbox").click(() => { 
+      this.handleFilterCheckboxClicked('bugChecked');
+    });
+    $("#nowCheckbox").click(() => { 
+      this.handleFilterCheckboxClicked('nowChecked');
+    });
+    $("#caughtCheckbox").click(() => { 
+      this.handleFilterCheckboxClicked('caughtChecked');
+    });
+    $("#leavingCheckbox").click(() => { 
+      this.handleFilterCheckboxClicked('leavingChecked');
+    });
   }
 
   this.setupDisplay = function(){
-    const fishChecked = $("#fishCheckbox").is(":checked");
-    const bugChecked = $("#bugCheckbox").is(":checked");
-    const nowChecked = $("#nowCheckbox").is(":checked");
-    const caughtChecked = $("#caughtCheckbox").is(":checked");
-    const leavingChecked = $("#leavingCheckbox").is(":checked");
+    const fishChecked = this.filterConfigData.fishChecked;
+    const bugChecked = this.filterConfigData.bugChecked;
+    const nowChecked = this.filterConfigData.nowChecked;
+    const caughtChecked = this.filterConfigData.caughtChecked;
+    const leavingChecked = this.filterConfigData.leavingChecked;
+
+    // Set filter checkbox values according to config saved in local storage
+    document.getElementById("fishCheckbox").checked = fishChecked;
+    document.getElementById("bugCheckbox").checked = bugChecked;
+    document.getElementById("nowCheckbox").checked = nowChecked;
+    document.getElementById("caughtCheckbox").checked = caughtChecked;
+    document.getElementById("leavingCheckbox").checked = leavingChecked;  
 
     //Filter table based on which checkboxes have been checked
     this.filter(fishChecked, bugChecked, nowChecked, caughtChecked, leavingChecked);
@@ -291,7 +333,7 @@ function App(selection, display){
     if(!isChecked && index > -1) this.saveData.splice(index, 1);
 
     //save to local storage
-    store.setItem("acnh-collectionData", this.saveData.toString());
+    store.setItem(collectionDataKey, this.saveData.toString());
   }
 
   this.escapeAllSingleQuotes = function(value){

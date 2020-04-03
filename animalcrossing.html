@@ -26,11 +26,11 @@
       <div id='selection'>
         <!-- By Type -->
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="fishCheckbox" value="showFish" checked=true>
+          <input class="form-check-input" type="checkbox" id="fishCheckbox" value="showFish">
           <label class="form-check-label" for="fishCheckbox">Fish</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="bugCheckbox" value="showBugs" checked=true>
+          <input class="form-check-input" type="checkbox" id="bugCheckbox" value="showBugs">
           <label class="form-check-label" for="bugCheckbox">Bugs</label>
         </div>
 
@@ -88,6 +88,7 @@
 
         //Setup main table and filter options
         const app = new App($('#selection'), $('#display'));
+        app.loadDataFromLocalStore();
         app.setupSelection();
         app.setupDisplay();
 
