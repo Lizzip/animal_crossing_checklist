@@ -326,7 +326,7 @@ function App(selection, display){
     const newDataString = newData.toString();
     const isChecked = $(this.display).find(`[id='${this.escapeAllSingleQuotes(critter)}']`).is(":checked");
     const index = this.saveData.indexOf(newDataString);
-    
+
     if(isChecked && index < 0) this.saveData.push(newDataString);
     if(!isChecked && index > -1) this.saveData.splice(index, 1);
 

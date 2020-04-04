@@ -43,10 +43,9 @@ describe("App", function() {
 
         const dummyDisplay = document.createElement('div');
         dummyDisplay.innerHTML = `<input class="form-check-input" type="checkbox" checked="true" id="${newCritterName}" value="${newCritterName}">`;
-        console.log(dummyDisplay)
+        
         const app = createApp(null, dummyDisplay);
         app.saveData = [];
-
         app.updateData(newCritterNum);
         
         const args = storageSetStub.firstCall.args;
@@ -55,8 +54,21 @@ describe("App", function() {
         expect(args[1]).to.equal(newCritterNum.toString());
       });
 
-      it.skip("updateData - should remove uncaught critter from storage", function(){
+      it("updateData - should remove uncaught critter from storage", function(){
+        const oldCritterName = "Crucian Carp";
+        const oldCritterNum = 2;
 
+        const dummyDisplay = document.createElement('div');
+        dummyDisplay.innerHTML = `<input class="form-check-input" type="checkbox" id="${oldCritterName}" value="${oldCritterName}">`;
+        
+        const app = createApp(null, dummyDisplay);
+        app.saveData = ['5',oldCritterNum.toString()];
+        app.updateData(oldCritterNum);
+        
+        const args = storageSetStub.firstCall.args;
+
+        expect(args[0]).to.equal("acnh-collectionData");
+        expect(args[1]).to.equal("5");
       });
 
       it("saveFilterConfigToLocalStore - should save filters to storage", function(){
