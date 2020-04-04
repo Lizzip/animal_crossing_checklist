@@ -37,8 +37,22 @@ describe("App", function() {
         sinon.restore();
       });
 
-      it.skip("updateData - should save new caught critters to storage", function(){
+      it("updateData - should save new caught critters to storage", function(){
+        const newCritterName = "Crucian Carp";
+        const newCritterNum = 2;
 
+        const dummyDisplay = document.createElement('div');
+        dummyDisplay.innerHTML = `<input class="form-check-input" type="checkbox" checked="true" id="${newCritterName}" value="${newCritterName}">`;
+        console.log(dummyDisplay)
+        const app = createApp(null, dummyDisplay);
+        app.saveData = [];
+
+        app.updateData(newCritterNum);
+        
+        const args = storageSetStub.firstCall.args;
+
+        expect(args[0]).to.equal("acnh-collectionData");
+        expect(args[1]).to.equal(newCritterNum.toString());
       });
 
       it.skip("updateData - should remove uncaught critter from storage", function(){

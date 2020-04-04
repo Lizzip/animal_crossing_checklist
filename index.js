@@ -322,11 +322,9 @@ function App(selection, display){
   }
 
   this.updateData = function(newData){
-    console.log(this.saveData, newData)
-
     const critter = critterNames[newData];
     const newDataString = newData.toString();
-    const isChecked = $(`[id='${this.escapeAllSingleQuotes(critter)}']`).is(":checked");
+    const isChecked = $(this.display).find(`[id='${this.escapeAllSingleQuotes(critter)}']`).is(":checked");
     const index = this.saveData.indexOf(newDataString);
     
     if(isChecked && index < 0) this.saveData.push(newDataString);
