@@ -221,19 +221,19 @@ function App(selection, display){
 
   this.setupSelection = function(){
     // Bind all filter checkboxes to redraw table on click
-    $("#fishCheckbox").click(() => { 
+    $(this.selection).find("#fishCheckbox").click(() => { 
       this.handleFilterCheckboxClicked('fishChecked');
     });
-    $("#bugCheckbox").click(() => { 
+    $(this.selection).find("#bugCheckbox").click(() => { 
       this.handleFilterCheckboxClicked('bugChecked');
     });
-    $("#nowCheckbox").click(() => { 
+    $(this.selection).find("#nowCheckbox").click(() => { 
       this.handleFilterCheckboxClicked('nowChecked');
     });
-    $("#caughtCheckbox").click(() => { 
+    $(this.selection).find("#caughtCheckbox").click(() => { 
       this.handleFilterCheckboxClicked('caughtChecked');
     });
-    $("#leavingCheckbox").click(() => { 
+    $(this.selection).find("#leavingCheckbox").click(() => { 
       this.handleFilterCheckboxClicked('leavingChecked');
     });
   }
@@ -294,7 +294,7 @@ function App(selection, display){
   }
 
   this.clearTable = function(){
-    $("#displayTable > tbody").empty();
+    $(this.display).find("#displayTable > tbody").empty();
   }
 
   this.tryCatchSomething = function(name){
@@ -312,7 +312,7 @@ function App(selection, display){
       let check = `<div class="form-check form-check-inline"><input class="form-check-input" ${checked} type="checkbox" id="${e.name}" value="${e.name}"><label class="form-check-label" for="${e.name}"></label></div>`;
       let row = `<tr><td>${check}</td><td>${e.name}</td><td>${e.type}</td><td>${e.price}</td><td>${e.location}</td><td>${e.time}</td><td>${e.month}</td></tr>`;
 
-      $("#displayTable > tbody").append(row);
+      $(this.display).find("#displayTable > tbody").append(row);
 
       document.getElementById(e.name).addEventListener("click", () => {
           this.tryCatchSomething(e.name)
@@ -322,11 +322,9 @@ function App(selection, display){
   }
 
   this.updateData = function(newData){
-    console.log(this.saveData, newData)
-
     const critter = critterNames[newData];
     const newDataString = newData.toString();
-    const isChecked = $(`[id='${this.escapeAllSingleQuotes(critter)}']`).is(":checked");
+    const isChecked = $(this.display).find(`[id='${this.escapeAllSingleQuotes(critter)}']`).is(":checked");
     const index = this.saveData.indexOf(newDataString);
 
     if(isChecked && index < 0) this.saveData.push(newDataString);
