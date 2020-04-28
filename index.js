@@ -14,7 +14,12 @@ const critterNames = ["Bitterling","Pale Chub","Crucian Carp","Dace","Carp","Koi
 "Pondskater","Diving Beetle","Giant Water Bug","Stinkbug","Man-faced Stink Bug","Ladybug","Tiger Beetle","Jewel Bettle","Violin Beetle","Citrus Long-horned Beetle","Rosalia Batesi Beetle",
 "Blue Weevil Beetle","Earth-boring Dung Beetle","Dung Beetle","Scarab Beetle","Drone Beetle","Goliath Beetle","Saw Stag","Miyama Stag ","Giant Stag","Rainbow Stag","Cyclommatus Stag",
 "Golden Stag","Giraffe Stag","Horned Dynastid","Horned Atlas","Horned Elephant","Horned Hercules","Walking Stick","Walking Leaf","Bagworm","Ant","Hermit Crab","Wharf Roach","Fly",
-"Mosquito","Flea","Snail","Pill Bug","Centipede","Spider","Tarantula","Scorpion"];
+"Mosquito","Flea","Snail","Pill Bug","Centipede","Spider","Tarantula","Scorpion","Serene Painting","Warm Painting","Wistful Painting","Academic Painting","Graceful Painting","Calm Painting",
+"Flowery Painting","Jolly Painting","Moody Painting","Famous Painting","Scary Painting","Dynamic Painting","Scenic Painting","Moving Painting","Amazing Painting","Quaint Painting",
+"Solemn Painting","Basic Painting","Worthy Painting","Glowing Painting","Common Painting","Sinking Painting","Nice Painting","Proper Painting","Mysterious Painting","Twinkling Painting",
+"Perfect Painting","Wild Painting Left Half","Wild Painting Right Half","Detailed Painting","Warrior Statue","Motherly Statue","Beautiful Statue","Familiar Statue","Robust Statue",
+"Gallant Statue","Informative Statue","Rock-head Statue","Ancient Statue","Tremendous Statue","Valiant Statue","Mystic Statue","Great Statue"];
+
 
 const fishData = [
   {'name': "Bitterling", price: "900", location: "River", time: "All", month: "January, February, March, November, December", type:"Fish"},
@@ -182,6 +187,55 @@ const bugData = [
   {'name': "Scorpion", price: "8000", month: "May, June, July, August, September, October, ", time: "7PM-4AM", location: "Scurrying around the floor at night - attacks you", type:"Bug"},
 ];
 
+const paintingData = [
+  {'name': "Serene Painting", price: "The real version will have a woman holding an all-white ermine. In the fake version, the ermine will have raccoon-like circles around its eyes", month: "All", time: "All", location: "", type:"Painting"},
+  {'name': "Warm Painting", price: "Always genuine", month: "All", time: "All", location: "", type:"Painting"},
+  {'name': "Wistful Painting", price: "The real version has a pearl earring. The fake version has a star-shaped earring", month: "All", time: "All", location: "", type:"Painting"},
+  {'name': "Academic Painting", price: "The fake version of this painting will have a coffee stain in the corner", month: "All", time: "All", location: "", type:"Painting"},
+  {'name': "Graceful Painting", price: "The real version has a white tag near her hair. The fake version does not have the tag. The woman in the fake painting is also larger. Another version of a fake Graceful Painting has her looking to the left, instead of to the right", month: "All", time: "All", location: "", type:"Painting"},
+  {'name': "Calm Painting", price: "Always genuine", month: "All", time: "All", location: "", type:"Painting"},
+  {'name': "Flowery Painting", price: "Always genuine", month: "All", time: "All", location: "", type:"Painting"},
+  {'name': "Jolly Painting", price: "The fake Jolly Painting will be missing the sprout on the subject’s chest", month: "All", time: "All", location: "", type:"Painting"},
+  {'name': "Moody Painting", price: "Always genuine", month: "All", time: "All", location: "", type:"Painting"},
+  {'name': "Famous Painting", price: "The fake Famous Painting will have eyebrows", month: "All", time: "All", location: "", type:"Painting"},
+  {'name': "Scary Painting", price: "The fake Scary Painting will have sad-looking eyebrows. The real one looks more angry", month: "All", time: "All", location: "", type:"Painting"},
+  {'name': "Dynamic Painting", price: "Always genuine", month: "All", time: "All", location: "", type:"Painting"},
+  {'name': "Scenic Painting", price: "The fake version of the Scenic Painting will be missing a hunter and some dogs. Real has 2 hunters and 11 dogs", month: "All", time: "All", location: "", type:"Painting"},
+  {'name': "Moving Painting", price: "The fake version of the Moving Painting will be missing trees in the top right corner", month: "All", time: "All", location: "", type:"Painting"},
+  {'name': "Amazing Painting", price: "The man in the front of the fake Amazing Painting is missing his hat", month: "All", time: "All", location: "", type:"Painting"},
+  {'name': "Quaint Painting", price: "In the fake version, the woman in the Quaint Painting is pouring out much more milk than she is in the real version", month: "All", time: "All", location: "", type:"Painting"},
+  {'name': "Solemn Painting", price: "The man in the background of the fake Solemn Painting is raising his arm more than he is in the real version", month: "All", time: "All", location: "", type:"Painting"},
+  {'name': "Basic Painting", price: "The fake version of the Basic Painting depicts the boy with more hair", month: "All", time: "All", location: "", type:"Painting"},
+  {'name': "Worthy Painting", price: "Always genuine", month: "All", time: "All", location: "", type:"Painting"},
+  {'name': "Glowing Painting", price: "Always genuine", month: "All", time: "All", location: "", type:"Painting"},
+  {'name': "Common Painting", price: "Always genuine", month: "All", time: "All", location: "", type:"Painting"},
+  {'name': "Sinking Painting", price: "Always genuine", month: "All", time: "All", location: "", type:"Painting"},
+  {'name': "Nice Painting", price: "Always genuine", month: "All", time: "All", location: "", type:"Painting"},
+  {'name': "Proper Painting", price: "Always genuine", month: "All", time: "All", location: "", type:"Painting"},
+  {'name': "Mysterious Painting", price: "Always genuine", month: "All", time: "All", location: "", type:"Painting"},
+  {'name': "Twinkling Painting", price: "Always genuine", month: "All", time: "All", location: "", type:"Painting"},
+  {'name': "Perfect Painting", price: "Always genuine", month: "All", time: "All", location: "", type:"Painting"},
+  {'name': "Wild Painting Left Half", price: "In the fake version of the Wild Painting Left Half, the beast is green. It should be white", month: "All", time: "All", location: "", type:"Painting"},
+  {'name': "Wild Painting Right Half", price: "In the fake version of the Wild Painting Right Half, the beast is white. It should be green", month: "All", time: "All", location: "", type:"Painting"},
+  {'name': "Detailed Painting", price: "The fake Detailed Painting has purple foliage instead of blue. It’s also missing a signature on the left", month: "All", time: "All", location: "", type:"Painting"},
+];
+
+const statueData = [
+  {'name': "Warrior Statue", price: "The real version will not be holding anything. The fake version is holding a shovel", month: "All", time: "All", location: "", type:"Statue"},
+  {'name': "Motherly Statue", price: "The fake version of the Motherly Statue will have a tongue sticking out of the wolf’s mouth", month: "All", time: "All", location: "", type:"Statue"},
+  {'name': "Beautiful Statue", price: "The fake version will be wearing a necklace", month: "All", time: "All", location: "", type:"Statue"},
+  {'name': "Familiar Statue", price: "Always genuine", month: "All", time: "All", location: "", type:"Statue"},
+  {'name': "Robust Statue", price: "The fake statue will be wearing a watch on his raised arm", month: "All", time: "All", location: "", type:"Statue"},
+  {'name': "Gallant Statue", price: "The fake statue is holding a book under his arm", month: "All", time: "All", location: "", type:"Statue"},
+  {'name': "Informative Statue", price: "The fake Informative Statue will be blue, but the real one is black", month: "All", time: "All", location: "", type:"Statue"},
+  {'name': "Rock-head Statue", price: "The fake statue will be smiling", month: "All", time: "All", location: "", type:"Statue"},
+  {'name': "Ancient Statue", price: "The fake Ancient Statue has two antennas coming out of the side of its head", month: "All", time: "All", location: "", type:"Statue"},
+  {'name': "Tremendous Statue", price: "The fake version of this statue has a lid. The real one will be open at the top", month: "All", time: "All", location: "", type:"Statue"},
+  {'name': "Valiant Statue", price: "The fake version of this statue will have Nike’s left leg forward. The real version has her right leg forward", month: "All", time: "All", location: "", type:"Statue"},
+  {'name': "Mystic Statue", price: "The fake Mystic Statue will have an earring on the subject’s right ear. Facing the statue directly, the earring will be on the viewer’s left", month: "All", time: "All", location: "", type:"Statue"},
+  {'name': "Great Statue", price: "Always genuine", month: "All", time: "All", location: "", type:"Statue"},
+];
+
 const fossilData = [];
 
 const filterConfigKey = "acnh-filterConfigData";
@@ -227,6 +281,12 @@ function App(selection, display){
     $(this.selection).find("#bugCheckbox").click(() => { 
       this.handleFilterCheckboxClicked('bugChecked');
     });
+    $(this.selection).find("#paintingCheckbox").click(() => { 
+      this.handleFilterCheckboxClicked('paintingChecked');
+    });
+    $(this.selection).find("#statueCheckbox").click(() => { 
+      this.handleFilterCheckboxClicked('statueChecked');
+    });
     $(this.selection).find("#nowCheckbox").click(() => { 
       this.handleFilterCheckboxClicked('nowChecked');
     });
@@ -241,6 +301,8 @@ function App(selection, display){
   this.setupDisplay = function(){
     const fishChecked = this.filterConfigData.fishChecked;
     const bugChecked = this.filterConfigData.bugChecked;
+    const paintingChecked = this.filterConfigData.paintingChecked;
+    const statueChecked = this.filterConfigData.statueChecked;
     const nowChecked = this.filterConfigData.nowChecked;
     const caughtChecked = this.filterConfigData.caughtChecked;
     const leavingChecked = this.filterConfigData.leavingChecked;
@@ -248,12 +310,14 @@ function App(selection, display){
     // Set filter checkbox values according to config saved in local storage
     document.getElementById("fishCheckbox").checked = fishChecked;
     document.getElementById("bugCheckbox").checked = bugChecked;
+    document.getElementById("paintingCheckbox").checked = paintingChecked;
+    document.getElementById("statueCheckbox").checked = statueChecked;
     document.getElementById("nowCheckbox").checked = nowChecked;
     document.getElementById("caughtCheckbox").checked = caughtChecked;
     document.getElementById("leavingCheckbox").checked = leavingChecked;  
 
     //Filter table based on which checkboxes have been checked
-    this.filter(fishChecked, bugChecked, nowChecked, caughtChecked, leavingChecked);
+    this.filter(fishChecked, bugChecked, paintingChecked, statueChecked, nowChecked, caughtChecked, leavingChecked);
   }
 
   this.getMonth = function(){
@@ -266,12 +330,14 @@ function App(selection, display){
     return monthNames[(now.getMonth() + 1) % 12];
   }
 
-  this.filter = function(fish, bug, now, caught, leaving){
+  this.filter = function(fish, bug, painting, statue, now, caught, leaving){
     let show = [];
     const month = this.getMonth();
 
     if(fish) show.push(...fishData);
     if(bug) show.push(...bugData);
+    if(painting) show.push(...paintingData)
+    if(statue) show.push(...statueData)
 
     if(now){
       show = show.filter(e => (e.month.toLowerCase().includes("all") || e.month.toLowerCase().includes(month)))
