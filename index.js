@@ -236,6 +236,80 @@ const statueData = [
   {'name': "Great Statue", price: "Always genuine", month: "All", time: "All", location: "", type:"Statue"},
 ];
 
+const plantData = [
+  //Roses
+  {'name': "Red Rose", location: "", month: "All", time: "All", price: "", type:"Plant"},
+  {'name': "White Rose", location: "", month: "All", time: "All", price: "", type:"Plant"},
+  {'name': "Yellow Rose", location: "", month: "All", time: "All", price: "", type:"Plant"},
+  {'name': "Orange Rose", location: "", month: "All", time: "All", price: "50% Red x Yellow", type:"Plant"},
+  {'name': "Black Rose", location: "", month: "All", time: "All", price: "25% Red x Red", type:"Plant"},
+  {'name': "Pink Rose", location: "", month: "All", time: "All", price: "25% Red x Red, 50% Red x White", type:"Plant"},
+  {'name': "Purple Rose", location: "", month: "All", time: "All", price: "25% White x White", type:"Plant"},
+  {'name': "Blue Rose", location: "", month: "All", time: "All", price: "6.25% Orange x Orange", type:"Plant"},
+  {'name': "Gold Rose", location: "", month: "All", time: "All", price: "50% chance when watering a black rose with a golden watering can", type:"Plant"},
+
+  //Tulips 
+  {'name': "Red Tulip", location: "", month: "All", time: "All", price: "", type:"Plant"},
+  {'name': "White Tulip", location: "", month: "All", time: "All", price: "", type:"Plant"},
+  {'name': "Yellow Tulip", location: "", month: "All", time: "All", price: "", type:"Plant"},
+  {'name': "Orange Tulip", location: "", month: "All", time: "All", price: "50% Red x Yellow", type:"Plant"},
+  {'name': "Black Tulip", location: "", month: "All", time: "All", price: "25% Red x Red, 19% Orange x Orange", type:"Plant"},
+  {'name': "Pink Tulip", location: "", month: "All", time: "All", price: "50% Red x White", type:"Plant"},
+  {'name': "Purple Tulip", location: "", month: "All", time: "All", price: "6% Orange x Orange", type:"Plant"},
+
+  //Pansies 
+  {'name': "Red Pansy", location: "", month: "All", time: "All", price: "", type:"Plant"},
+  {'name': "White Pansy", location: "", month: "All", time: "All", price: "", type:"Plant"},
+  {'name': "Yellow Pansy", location: "", month: "All", time: "All", price: "", type:"Plant"},
+  {'name': "Orange Pansy", location: "", month: "All", time: "All", price: "100% Red x Yellow", type:"Plant"},
+  {'name': "Blue Pansy", location: "", month: "All", time: "All", price: "25% White x White, 19% Red(hybrid) x Red(hybrid)", type:"Plant"},
+  {'name': "Red(hybrid) Pansy", location: "", month: "All", time: "All", price: "100% Blue x Red", type:"Plant"},
+  {'name': "Purple Pansy", location: "", month: "All", time: "All", price: "6% Red(hybrid) x Red(hybrid)", type:"Plant"},
+
+  //Cosmos
+  {'name': "Red Cosmos", location: "", month: "All", time: "All", price: "", type:"Plant"},
+  {'name': "White Cosmos", location: "", month: "All", time: "All", price: "", type:"Plant"},
+  {'name': "Yellow Cosmos", location: "", month: "All", time: "All", price: "", type:"Plant"},
+  {'name': "Orange Cosmos", location: "", month: "All", time: "All", price: "100% Red x Yellow", type:"Plant"},
+  {'name': "Pink Cosmos", location: "", month: "All", time: "All", price: "100% Red x White", type:"Plant"},
+  {'name': "Black Cosmos", location: "", month: "All", time: "All", price: "6% Orange x Orange", type:"Plant"},
+
+  //Lilies
+  {'name': "Red Lily", location: "", month: "All", time: "All", price: "", type:"Plant"},
+  {'name': "White Lily", location: "", month: "All", time: "All", price: "", type:"Plant"},
+  {'name': "Yellow Lily", location: "", month: "All", time: "All", price: "", type:"Plant"},
+  {'name': "Orange Lily", location: "", month: "All", time: "All", price: "50% Red x Yellow", type:"Plant"},
+  {'name': "Pink Lily", location: "", month: "All", time: "All", price: "25% Red x Red, 50% Red x White", type:"Plant"},
+  {'name': "Black Lily", location: "", month: "All", time: "All", price: "25% Red x Red", type:"Plant"},
+
+  //Hyacinths
+  {'name': "Red Hyacinth", location: "", month: "All", time: "All", price: "", type:"Plant"},
+  {'name': "White Hyacinth", location: "", month: "All", time: "All", price: "", type:"Plant"},
+  {'name': "Yellow Hyacinth", location: "", month: "All", time: "All", price: "", type:"Plant"},
+  {'name': "Orange Hyacinth", location: "", month: "All", time: "All", price: "50% Red x Yellow", type:"Plant"},
+  {'name': "Pink Hyacinth", location: "", month: "All", time: "All", price: "50% Red x White", type:"Plant"},
+  {'name': "Purple Hyacinth", location: "", month: "All", time: "All", price: "6% Orange x Orange", type:"Plant"},
+  {'name': "Blue Hyacinth", location: "", month: "All", time: "All", price: "25% White x White, 13% Orange x Orange", type:"Plant"},
+  
+  //Windflower
+  {'name': "Red Windflower", location: "", month: "All", time: "All", price: "", type:"Plant"},
+  {'name': "White Windflower", location: "", month: "All", time: "All", price: "", type:"Plant"},
+  {'name': "Orange Windflower", location: "", month: "All", time: "All", price: "", type:"Plant"},
+  {'name': "Pink Windflower", location: "", month: "All", time: "All", price: "100% Red x Orange", type:"Plant"},
+  {'name': "Red(hybrid) Windflower", location: "", month: "All", time: "All", price: "100% Blue x Red", type:"Plant"},
+  {'name': "Purple Windflower", location: "", month: "All", time: "All", price: "6% Red(hybrid) x Red(hybrid)", type:"Plant"},
+  {'name': "Blue Windflower", location: "", month: "All", time: "All", price: "25% White x White", type:"Plant"},
+
+  //Mums
+  {'name': "Red Mum", location: "", month: "All", time: "All", price: "", type:"Plant"},
+  {'name': "White Mum", location: "", month: "All", time: "All", price: "", type:"Plant"},
+  {'name': "Yellow Mum", location: "", month: "All", time: "All", price: "", type:"Plant"},
+  {'name': "Yellow(hybrid) Mum", location: "", month: "All", time: "All", price: "100% Red x Yellow", type:"Plant"},
+  {'name': "Pink Mum", location: "", month: "All", time: "All", price: "100% Red x White, 13% Yellow(hybrid) x Yellow(hybrid)", type:"Plant"},
+  {'name': "Purple Mum", location: "", month: "All", time: "All", price: "25% White x White, 26% Yellow(hybrid) x Yellow(hybrid)", type:"Plant"},
+  {'name': "Green Mum", location: "", month: "All", time: "All", price: "25% Purple x Purple, 6% Yellow(hybrid) x Yellow(hybrid)", type:"Plant"},
+];
+
 const fossilData = [];
 
 const filterConfigKey = "acnh-filterConfigData";
@@ -287,6 +361,9 @@ function App(selection, display){
     $(this.selection).find("#statueCheckbox").click(() => { 
       this.handleFilterCheckboxClicked('statueChecked');
     });
+    $(this.selection).find("#plantsCheckbox").click(() => { 
+      this.handleFilterCheckboxClicked('plantsChecked');
+    });
     $(this.selection).find("#nowCheckbox").click(() => { 
       this.handleFilterCheckboxClicked('nowChecked');
     });
@@ -303,6 +380,7 @@ function App(selection, display){
     const bugChecked = this.filterConfigData.bugChecked;
     const paintingChecked = this.filterConfigData.paintingChecked;
     const statueChecked = this.filterConfigData.statueChecked;
+    const plantsChecked = this.filterConfigData.plantsChecked;
     const nowChecked = this.filterConfigData.nowChecked;
     const caughtChecked = this.filterConfigData.caughtChecked;
     const leavingChecked = this.filterConfigData.leavingChecked;
@@ -312,12 +390,13 @@ function App(selection, display){
     document.getElementById("bugCheckbox").checked = bugChecked;
     document.getElementById("paintingCheckbox").checked = paintingChecked;
     document.getElementById("statueCheckbox").checked = statueChecked;
+    document.getElementById("plantsCheckbox").checked = plantsChecked;
     document.getElementById("nowCheckbox").checked = nowChecked;
     document.getElementById("caughtCheckbox").checked = caughtChecked;
     document.getElementById("leavingCheckbox").checked = leavingChecked;  
 
     //Filter table based on which checkboxes have been checked
-    this.filter(fishChecked, bugChecked, paintingChecked, statueChecked, nowChecked, caughtChecked, leavingChecked);
+    this.filter(fishChecked, bugChecked, paintingChecked, statueChecked, plantsChecked, nowChecked, caughtChecked, leavingChecked);
   }
 
   this.getMonth = function(){
@@ -330,7 +409,7 @@ function App(selection, display){
     return monthNames[(now.getMonth() + 1) % 12];
   }
 
-  this.filter = function(fish, bug, painting, statue, now, caught, leaving){
+  this.filter = function(fish, bug, painting, statue, plant, now, caught, leaving){
     let show = [];
     const month = this.getMonth();
 
@@ -338,6 +417,7 @@ function App(selection, display){
     if(bug) show.push(...bugData);
     if(painting) show.push(...paintingData)
     if(statue) show.push(...statueData)
+    if(plant) show.push(...plantData)
 
     if(now){
       show = show.filter(e => (e.month.toLowerCase().includes("all") || e.month.toLowerCase().includes(month)))
