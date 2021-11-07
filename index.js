@@ -55,6 +55,9 @@ function App(selection, display){
     $(this.selection).find("#plantsCheckbox").click(() => { 
       this.handleFilterCheckboxClicked('plantsChecked');
     });
+    $(this.selection).find("#seacreaturesCheckbox").click(() => { 
+      this.handleFilterCheckboxClicked('seacreaturesChecked');
+    });
     $(this.selection).find("#nowCheckbox").click(() => { 
       this.handleFilterCheckboxClicked('nowChecked');
     });
@@ -73,6 +76,7 @@ function App(selection, display){
     const statueChecked = this.filterConfigData.statueChecked;
     const fossilChecked = this.filterConfigData.fossilChecked;
     const plantsChecked = this.filterConfigData.plantsChecked;
+    const seacreaturesChecked = this.filterConfigData.seacreaturesChecked;
     const nowChecked = this.filterConfigData.nowChecked;
     const caughtChecked = this.filterConfigData.caughtChecked;
     const leavingChecked = this.filterConfigData.leavingChecked;
@@ -84,12 +88,13 @@ function App(selection, display){
     document.getElementById("statueCheckbox").checked = statueChecked;
     document.getElementById("fossilCheckbox").checked = fossilChecked;
     document.getElementById("plantsCheckbox").checked = plantsChecked;
+    document.getElementById("seacreaturesCheckbox").checked = seacreaturesChecked;
     document.getElementById("nowCheckbox").checked = nowChecked;
     document.getElementById("caughtCheckbox").checked = caughtChecked;
     document.getElementById("leavingCheckbox").checked = leavingChecked;  
 
     //Filter table based on which checkboxes have been checked
-    this.filter(fishChecked, bugChecked, paintingChecked, statueChecked, fossilChecked, plantsChecked, nowChecked, caughtChecked, leavingChecked);
+    this.filter(fishChecked, bugChecked, paintingChecked, statueChecked, fossilChecked, plantsChecked, seacreaturesChecked, nowChecked, caughtChecked, leavingChecked);
   }
 
   this.getMonth = function(){
@@ -102,7 +107,7 @@ function App(selection, display){
     return monthNames[(now.getMonth() + 1) % 12];
   }
 
-  this.filter = function(fish, bug, painting, statue, fossil, plant, now, caught, leaving){
+  this.filter = function(fish, bug, painting, statue, fossil, plant, screatures, now, caught, leaving){
     let show = [];
     const month = this.getMonth();
 
@@ -112,6 +117,7 @@ function App(selection, display){
     if(statue) show.push(...statueData)
     if(fossil) show.push(...fossilData)
     if(plant) show.push(...plantData)
+    if(screatures) show.push(...seacreaturesData)
 
     if(now){
       show = show.filter(e => (e.month.toLowerCase().includes("all") || e.month.toLowerCase().includes(month)))
